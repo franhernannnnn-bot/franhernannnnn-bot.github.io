@@ -3,4 +3,4 @@ Allow: /
 Disallow: /carrito.html
 Disallow: /pedidos.html
 
-Sitemap: https://franhernannnnn-bot.github.io/zacahuil-huasteco/sitemap.xml
+Sitemap: https://franhernannnnn-bot.github.io/sitemap.xml

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ciclo de vida de desarrollo de software SDLC aplicado al proyecto Zacahuil Huasteco: Scrum, seguridad Shift Left, CI/CD, contenedores y observabilidad.">
+<meta name="keywords" content="SDLC, Scrum, metodología ágil, Sprint, Product Backlog, Shift Left, CI/CD, Docker, observabilidad, Zacahuil Huasteco">
+<meta name="author" content="Proyecto académico Zacahuil Huasteco">
+<title>Desarrollo SDLC | Zacahuil Huasteco</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.sdlc-hero{background:linear-gradient(135deg,#263b2b,#527449);color:#fff;padding:64px 0}
+.sdlc-hero h1{font-size:clamp(2rem,5vw,3.4rem);margin:.3rem 0}
+.sdlc-hero p{max-width:850px;line-height:1.7}
+.sdlc-wrap{max-width:1120px;margin:auto;padding:38px 22px}
+.sdlc-kicker{font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#b96b24;font-size:.8rem}
+.sdlc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:18px;margin:22px 0}
+.sdlc-card{background:#fff;border:1px solid #e7e4dc;border-radius:14px;padding:22px;box-shadow:0 5px 18px #1d28120d}
+.sdlc-card h3{margin-top:0;color:#315338}
+.sdlc-card p,.sdlc-card li{line-height:1.65}
+.sdlc-pill{display:inline-block;border-radius:99px;padding:5px 10px;background:#edf3e8;color:#315338;font-size:.8rem;font-weight:700}
+.sdlc-table{width:100%;border-collapse:collapse;margin:18px 0;background:#fff}
+.sdlc-table th,.sdlc-table td{border:1px solid #ddd;padding:12px;text-align:left;vertical-align:top}
+.sdlc-table th{background:#315338;color:white}
+.sdlc-table tr:nth-child(even){background:#f8f7f2}
+.sdlc-progress{height:9px;background:#e8e8e2;border-radius:99px;overflow:hidden;margin:12px 0}
+.sdlc-progress span{display:block;width:100%;height:100%;background:#c87932}
+.sdlc-note{background:#fff5e8;border-left:4px solid #c87932;padding:14px 17px;border-radius:5px;line-height:1.6}
+.sdlc-checklist label{display:flex;gap:10px;align-items:flex-start;margin:12px 0;line-height:1.5}
+.sdlc-checklist input{margin-top:5px;accent-color:#315338}
+.sdlc-button{border:0;border-radius:8px;background:#315338;color:white;padding:11px 16px;font-weight:700;cursor:pointer}
+.sdlc-button:hover{filter:brightness(1.12)}
+.sdlc-status{font-weight:700;color:#315338;margin-left:10px}
+@media(max-width:600px){.sdlc-table{font-size:.88rem}.sdlc-table th,.sdlc-table td{padding:8px}.sdlc-wrap{padding:28px 15px}}
+</style>
+</head>
+<body>
+<header class="header">
+ <div class="container nav">
+  <a class="logo" href="index.html">ZACAHUIL <span>HUASTECO</span></a>
+  <button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+<nav id="menu">
+<a href="index.html">Inicio</a><a href="historia.html">Tradición</a><a href="productos.html">Productos</a><a href="promociones.html">Promociones</a><a href="galeria.html">Galería</a><a href="blog.html">Blog</a><a href="ayuda.html">Ayuda</a><a href="sdlc.html">SDLC</a><a href="contacto.html">Contacto</a><a class="cart-link" href="carrito.html"><img src="img/carro.png" alt="Carrito de compras" title="Carrito"> <span id="cartCount">0</span></a>
+</nav>
+ </div>
+</header>
+
+<section class="sdlc-hero">
+ <div class="container">
+  <p class="sdlc-kicker" style="color:#f6d2a9">Proyecto académico · Ingeniería de software</p>
+  <h1>Ciclo de vida del desarrollo de software (SDLC)</h1>
+  <p>Aplicación de un proceso completo de desarrollo al sitio web <strong>Zacahuil Huasteco</strong>, desde la planeación de requisitos hasta el despliegue, monitoreo y mejora continua. La propuesta se organiza con Scrum e incorpora seguridad temprana, automatización y retroalimentación.</p>
+  <a class="btn" href="#plan-scrum">Consultar plan de trabajo</a>
+ </div>
+</section>
+
+<main>
+<section class="sdlc-wrap">
+ <p class="sdlc-kicker">01 · Ciclo de vida</p>
+ <h2>Etapas del SDLC aplicadas al sitio web</h2>
+ <div class="sdlc-grid">
+  <article class="sdlc-card"><span class="sdlc-pill">Etapa 1</span><h3>Planificación y análisis</h3><p>Identificar usuarios, objetivos y requisitos: consultar el catálogo de zacahuil, ver promociones, agregar productos al carrito y contactar al negocio.</p></article>
+  <article class="sdlc-card"><span class="sdlc-pill">Etapa 2</span><h3>Diseño</h3><p>Definir navegación, estructura HTML, estilos CSS, comportamiento JavaScript, diseño adaptable y accesibilidad básica.</p></article>
+  <article class="sdlc-card"><span class="sdlc-pill">Etapa 3</span><h3>Desarrollo</h3><p>Construir las páginas Inicio, Tradición, Productos, Promociones, Galería, Contacto y la documentación SDLC.</p></article>
+  <article class="sdlc-card"><span class="sdlc-pill">Etapa 4</span><h3>Pruebas y seguridad</h3><p>Probar enlaces, buscador, carrito, formularios y vista móvil; revisar entradas, dependencias y posibles errores antes de publicar.</p></article>
+  <article class="sdlc-card"><span class="sdlc-pill">Etapa 5</span><h3>Despliegue</h3><p>Publicar una versión revisada en el servidor de pruebas o alojamiento web. Guardar una copia de seguridad antes de actualizar.</p></article>
+  <article class="sdlc-card"><span class="sdlc-pill">Etapa 6</span><h3>Operación y mejora</h3><p>Revisar fallos, rendimiento, visitas y comentarios. Priorizar mejoras para el siguiente Sprint.</p></article>
+ </div>
+ <div class="sdlc-note"><strong>Alcance real de esta práctica:</strong> esta página documenta el proceso y ofrece un checklist de revisión. La automatización CI/CD, Docker y las herramientas de monitoreo descritas más adelante son una propuesta de implementación; no se activan por agregar esta página al sitio.</div>
+</section>
+
+<section class="sdlc-wrap" id="plan-scrum">
+ <p class="sdlc-kicker">02 · Gestión ágil</p>
+ <h2>Metodología ágil y Scrum</h2>
+ <p>La metodología ágil permite entregar mejoras pequeñas, recibir comentarios y adaptar los requisitos. Scrum organiza el trabajo mediante un Product Backlog priorizado, Sprints de duración fija, reuniones breves y revisión del incremento con el usuario.</p>
+ <div class="sdlc-grid">
+  <article class="sdlc-card"><h3>Roles sugeridos</h3><ul><li><strong>Product Owner:</strong> representa las necesidades del cliente y prioriza el catálogo, promociones y pedidos.</li><li><strong>Scrum Master:</strong> facilita el proceso y ayuda a resolver impedimentos.</li><li><strong>Equipo de desarrollo:</strong> diseña, programa, prueba y documenta la solución.</li></ul></article>
+  <article class="sdlc-card"><h3>Eventos Scrum</h3><ul><li>Planificación del Sprint: definir el objetivo y las tareas.</li><li>Seguimiento diario: revisar avances y bloqueos.</li><li>Revisión: demostrar el incremento al usuario.</li><li>Retrospectiva: acordar cómo mejorar el proceso.</li></ul></article>
+ </div>
+ <h3>Product Backlog — lista priorizada de requisitos</h3>
+ <table class="sdlc-table"><thead><tr><th>ID</th><th>Requisito / historia de usuario</th><th>Prioridad</th><th>Criterio de aceptación</th></tr></thead><tbody>
+ <tr><td>PB-01</td><td>Como visitante, quiero conocer la tradición del zacahuil.</td><td>Alta</td><td>La página de tradición explica el producto y se puede abrir desde el menú.</td></tr>
+ <tr><td>PB-02</td><td>Como cliente, quiero consultar productos y precios.</td><td>Alta</td><td>El catálogo muestra nombre, descripción y precio de demostración claramente identificados.</td></tr>
+ <tr><td>PB-03</td><td>Como cliente, quiero añadir artículos al carrito.</td><td>Alta</td><td>El contador y el resumen del carrito se actualizan al agregar o quitar artículos.</td></tr>
+ <tr><td>PB-04</td><td>Como visitante, quiero encontrar contenido con el buscador.</td><td>Media</td><td>Las coincidencias se muestran de forma comprensible y los enlaces funcionan.</td></tr>
+ <tr><td>PB-05</td><td>Como responsable del sitio, quiero prevenir errores y vulnerabilidades.</td><td>Alta</td><td>Se ejecutan revisiones de dependencias, pruebas de enlaces y validación de formularios.</td></tr>
+ <tr><td>PB-06</td><td>Como responsable, quiero conocer fallos y opiniones de los usuarios.</td><td>Media</td><td>Existe un proceso para registrar errores y revisar sugerencias periódicamente.</td></tr>
+ </tbody></table>
+ <h3>Sprint Backlog — ejemplo de Sprint de 2 semanas</h3>
+ <table class="sdlc-table"><thead><tr><th>Tarea</th><th>Actividad</th><th>Resultado esperado</th></tr></thead><tbody>
+ <tr><td>SB-01</td><td>Revisar requisitos y enlaces de navegación.</td><td>Lista de requisitos y enlaces funcionales.</td></tr>
+ <tr><td>SB-02</td><td>Probar catálogo, carrito y buscador en escritorio y móvil.</td><td>Registro de pruebas y errores corregidos.</td></tr>
+ <tr><td>SB-03</td><td>Realizar revisión básica de seguridad y dependencias.</td><td>Hallazgos documentados y priorizados.</td></tr>
+ <tr><td>SB-04</td><td>Solicitar opinión a un usuario de prueba.</td><td>Comentarios clasificados por prioridad.</td></tr>
+ <tr><td>SB-05</td><td>Presentar el incremento y realizar retrospectiva.</td><td>Versión revisada y acciones para el siguiente Sprint.</td></tr>
+ </tbody></table>
+</section>
+
+<section class="sdlc-wrap">
+ <p class="sdlc-kicker">03 · Seguridad temprana</p>
+ <h2>Shift Left: seguridad desde el inicio</h2>
+ <p>Shift Left significa incorporar controles de seguridad desde la planificación y el desarrollo, en lugar de esperar hasta el final.</p>
+ <div class="sdlc-grid">
+  <article class="sdlc-card"><h3>Durante el diseño</h3><p>Definir qué datos se recopilan, minimizar datos personales y establecer permisos adecuados si se agrega un panel administrativo.</p></article>
+  <article class="sdlc-card"><h3>Durante el desarrollo</h3><p>Validar entradas, evitar insertar contenido no confiable como HTML, no guardar contraseñas o claves en el código y usar HTTPS en producción.</p></article>
+  <article class="sdlc-card"><h3>Antes de publicar</h3><p>Revisar dependencias, formularios, permisos de archivos, enlaces externos y mensajes de error. Corregir primero los riesgos críticos.</p></article>
+ </div>
+</section>
+
+<section class="sdlc-wrap">
+ <p class="sdlc-kicker">04 · Automatización</p>
+ <h2>Propuesta de CI/CD</h2>
+ <p>La integración continua (CI) verifica cada cambio; la entrega o despliegue continuo (CD) prepara y, si se autoriza, publica una versión validada.</p>
+ <div class="sdlc-grid">
+  <article class="sdlc-card"><h3>1. Código</h3><p>Guardar cambios en Git con mensajes claros y ramas para nuevas funciones.</p></article>
+  <article class="sdlc-card"><h3>2. Validación automática</h3><p>Ejecutar revisión de formato, comprobación de enlaces, pruebas disponibles y análisis de dependencias.</p></article>
+  <article class="sdlc-card"><h3>3. Construcción</h3><p>Preparar los archivos del sitio y generar un artefacto versionado.</p></article>
+  <article class="sdlc-card"><h3>4. Entorno de pruebas</h3><p>Publicar primero en staging y realizar pruebas funcionales y de seguridad.</p></article>
+  <article class="sdlc-card"><h3>5. Aprobación y despliegue</h3><p>Solicitar aprobación, publicar la versión y conservar un procedimiento de reversión.</p></article>
+ </div>
+ <div class="sdlc-note">Herramientas posibles: Git y GitHub para control de versiones; GitHub Actions para automatizar verificaciones; un servidor de pruebas para validar antes de producción. Para este sitio estático, los pasos deben configurarse en el repositorio: no se ejecutan automáticamente todavía.</div>
+</section>
+
+<section class="sdlc-wrap">
+ <p class="sdlc-kicker">05 · Contenedorización</p>
+ <h2>Uso de Docker</h2>
+ <p>Docker puede empaquetar el servidor web y los archivos de la aplicación en una imagen reproducible, reduciendo diferencias entre el equipo de desarrollo y el servidor. Para una web HTML/CSS/JavaScript estática, se puede usar un contenedor Nginx sencillo.</p>
+ <div class="sdlc-card"><h3>Flujo propuesto</h3><ol><li>Guardar los archivos del sitio en un repositorio.</li><li>Crear un archivo Dockerfile con Nginx y copiar los archivos web a su directorio público.</li><li>Construir la imagen y ejecutar el contenedor en desarrollo.</li><li>Probar navegación, recursos CSS/JS y diseño adaptable.</li><li>Etiquetar la versión y desplegarla solo después de las verificaciones.</li></ol></div>
+ <p><strong>Nota:</strong> Docker es una propuesta para la práctica; no es requisito para abrir el sitio localmente con XAMPP o directamente en el navegador.</p>
+</section>
+
+<section class="sdlc-wrap">
+ <p class="sdlc-kicker">06 · Observabilidad y feedback</p>
+ <h2>Monitoreo y mejora continua</h2>
+ <div class="sdlc-grid">
+  <article class="sdlc-card"><h3>Registros (logs)</h3><p>Registrar errores del servidor y fallos reportados, sin incluir contraseñas ni información sensible.</p></article>
+  <article class="sdlc-card"><h3>Métricas</h3><p>Observar disponibilidad, tiempo de carga, errores y páginas más consultadas. Utilizar PageSpeed Insights para evaluar rendimiento.</p></article>
+  <article class="sdlc-card"><h3>Experiencia del usuario</h3><p>Recopilar comentarios sobre el catálogo, la navegación y el proceso de pedido; usar analítica solo con la configuración y avisos de privacidad apropiados.</p></article>
+ </div>
+ <h3>Checklist de validación del incremento</h3>
+ <p>Marca las verificaciones realizadas durante tu práctica. La selección se conserva mientras esta página permanezca abierta.</p>
+ <div class="sdlc-card sdlc-checklist" id="reviewChecklist">
+  <label><input type="checkbox"> El menú y los enlaces principales funcionan.</label>
+  <label><input type="checkbox"> El sitio se visualiza correctamente en móvil y escritorio.</label>
+  <label><input type="checkbox"> El catálogo, buscador y carrito se probaron con casos normales y errores.</label>
+  <label><input type="checkbox"> Se revisaron entradas, formularios y dependencias.</label>
+  <label><input type="checkbox"> Se registró al menos una opinión de usuario o compañero.</label>
+  <label><input type="checkbox"> Se anotaron los errores pendientes y las tareas del próximo Sprint.</label>
+  <div class="sdlc-progress"><span id="checkProgress" style="width:0%"></span></div>
+  <button class="sdlc-button" id="resetChecks" type="button">Reiniciar checklist</button>
+  <span class="sdlc-status" id="checkStatus" aria-live="polite">0 de 6 completadas</span>
+ </div>
+</section>
+
+<section class="sdlc-wrap">
+ <p class="sdlc-kicker">07 · Criterios de éxito</p>
+ <h2>Indicadores para evaluar la práctica</h2>
+ <table class="sdlc-table"><thead><tr><th>Indicador</th><th>Cómo medirlo</th><th>Meta inicial sugerida</th></tr></thead><tbody>
+ <tr><td>Pruebas funcionales</td><td>Casos aprobados / casos ejecutados.</td><td>Al menos 90% aprobados antes de la entrega académica.</td></tr>
+ <tr><td>Errores críticos</td><td>Hallazgos críticos pendientes.</td><td>0 errores críticos conocidos al publicar.</td></tr>
+ <tr><td>Rendimiento</td><td>Medición con PageSpeed Insights.</td><td>Registrar el resultado inicial y mejorar los problemas prioritarios.</td></tr>
+ <tr><td>Feedback</td><td>Número de comentarios revisados y acciones acordadas.</td><td>Revisar los comentarios al cierre de cada Sprint.</td></tr>
+ <tr><td>Entrega</td><td>Incremento probado y documentado.</td><td>Una entrega revisable al final de cada Sprint.</td></tr>
+ </tbody></table>
+ <div class="sdlc-note"><strong>Conclusión:</strong> integrar SDLC con Scrum ayuda a organizar los requisitos y entregar mejoras gradualmente. Shift Left reduce riesgos al revisar la seguridad temprano; CI/CD y Docker pueden hacer más repetibles las entregas; la observabilidad y el feedback permiten detectar problemas y orientar las siguientes mejoras.</div>
+</section>
+</main>
+<footer><div class="container footer-grid"><div><h3>Zacahuil Huasteco</h3><p>Tradición que se comparte.</p><p>Huejutla de Reyes, Hidalgo.</p></div><div><h4>Enlaces</h4><a href="index.html">Inicio</a><a href="productos.html">Productos</a><a href="contacto.html">Contacto</a></div><div><h4>Proyecto</h4><p>Práctica académica SDLC</p><p>© <span id="year"></span> Zacahuil Huasteco</p></div></div></footer>
+<script src="js/script.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const checks = Array.from(document.querySelectorAll('#reviewChecklist input[type="checkbox"]'));
+function updateChecklist(){
+ const done = checks.filter(item => item.checked).length;
+ document.getElementById('checkProgress').style.width = (done/checks.length*100) + '%';
+ document.getElementById('checkStatus').textContent = done + ' de ' + checks.length + ' completadas';
+}
+checks.forEach(item => item.addEventListener('change', updateChecklist));
+document.getElementById('resetChecks').addEventListener('click', () => {
+ checks.forEach(item => item.checked = false);
+ updateChecklist();
+});
+</script>
+<script src="js/carrito.js"></script>
+</body>
+</html>

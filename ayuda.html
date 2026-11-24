@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Servicios y Mesa de ayuda | Zacahuil Huasteco</title>
+<meta name="description" content="Catálogo de servicios de Zacahuil Huasteco y mesa de ayuda para reportar incidentes o solicitar servicios, con seguimiento por estado.">
+<link rel="canonical" href="https://franhernannnnn-bot.github.io/zacahuil-huasteco/ayuda.html">
+<link rel="stylesheet" href="css/style.css">
+<style>.estado{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:bold;background:var(--light);color:var(--brown)}.estado.Cerrado{background:#dff3df;color:#236b2b}.estado.Resuelto{background:#e6f0d8;color:var(--green)}.tabla-scroll{overflow-x:auto}</style>
+</head>
+<body>
+<header class="header"><div class="container nav"><a class="logo" href="index.html">ZACAHUIL <span>HUASTECO</span></a><button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+<nav id="menu"><a href="index.html">Inicio</a><a href="historia.html">Tradición</a><a href="productos.html">Productos</a><a href="promociones.html">Promociones</a><a href="galeria.html">Galería</a><a href="blog.html">Blog</a><a class="active" href="ayuda.html">Ayuda</a><a href="contacto.html">Contacto</a><a class="cart-link" href="carrito.html"><img src="img/carro.png" alt="Carrito de compras" title="Carrito"> <span id="cartCount">0</span></a></nav></div></header>
+
+<section class="page-banner"><div class="container"><p class="eyebrow">ITIL</p><h1>Servicios y mesa de ayuda</h1><p>Consulta lo que ofrecemos o reporta un problema con el sitio o tu pedido.</p></div></section>
+
+<section class="section"><div class="container">
+<h2>Catálogo de servicios</h2>
+<div class="tabla-scroll"><table>
+<tr><th>Servicio</th><th>Descripción</th><th>Canal</th><th>Tiempo objetivo</th></tr>
+<tr><td>Venta en línea</td><td>Catálogo, carrito y pedido de zacahuil</td><td>Sitio web</td><td>Disponible 24/7</td></tr>
+<tr><td>Atención de pedidos</td><td>Confirmación y entrega del pedido</td><td>WhatsApp / pedidos.html</td><td>Respuesta en 2 horas</td></tr>
+<tr><td>Pedidos para eventos</td><td>Cotización de zacahuil para fiestas</td><td>Contacto</td><td>Respuesta en 24 horas</td></tr>
+<tr><td>Soporte del sitio</td><td>Fallas, errores o dudas al comprar</td><td>Mesa de ayuda</td><td>Según prioridad</td></tr>
+</table></div>
+</div></section>
+
+<section class="section cream"><div class="container form-layout">
+<div class="form-box">
+<h2>Registrar ticket</h2>
+<p class="form-note">Tu ticket pasa por: Registrado → Clasificado → En atención → Resuelto → Cerrado.</p>
+<form id="ticketForm">
+<label for="tNombre">Nombre</label><input id="tNombre" required>
+<label for="tCorreo">Correo</label><input id="tCorreo" type="email" required>
+<label for="tTipo">Tipo</label>
+<select id="tTipo"><option value="Incidente">Incidente (algo no funciona)</option><option value="Solicitud">Solicitud de servicio</option></select>
+<label for="tPrioridad">Impacto</label>
+<select id="tPrioridad"><option>Bajo</option><option>Medio</option><option>Alto</option></select>
+<label for="tDesc">Descripción</label><textarea id="tDesc" rows="4" required></textarea>
+<button class="btn full" type="submit">Enviar ticket</button>
+</form>
+<div class="success" id="tOk"></div>
+</div>
+<aside class="order-info"><h2>Flujo de atención</h2>
+<p><b>1. Registro:</b> se guarda con un número.</p>
+<p><b>2. Clasificación:</b> incidente o solicitud, y prioridad.</p>
+<p><b>3. Atención:</b> se diagnostica y se responde.</p>
+<p><b>4. Cierre:</b> se confirma con la persona usuaria.</p></aside>
+</div></section>
+
+<section class="section"><div class="container">
+<h2>Seguimiento de tickets</h2>
+<p class="form-note">Demostración: los tickets se guardan en este navegador. En producción se conectarían a un servidor.</p>
+<div class="tabla-scroll"><table id="tTabla"><tr><th>No.</th><th>Tipo</th><th>Prioridad</th><th>Estado</th><th>Fecha</th><th>Acción</th></tr></table></div>
+</div></section>
+
+<footer><div class="container footer-grid"><div><h3>Zacahuil Huasteco</h3><p>Tradición que se comparte.</p></div><div><h4>Enlaces</h4><a href="contacto.html">Contacto</a><a href="blog.html">Blog</a></div><div><p>© <span id="year"></span> Zacahuil Huasteco</p></div></div></footer>
+<script src="js/script.js"></script><script src="js/carrito.js"></script>
+<script>
+const ESTADOS=["Registrado","Clasificado","En atención","Resuelto","Cerrado"];
+const load=()=>{try{return JSON.parse(localStorage.getItem("tickets")||"[]")}catch(e){return[]}};
+const save=t=>{try{localStorage.setItem("tickets",JSON.stringify(t))}catch(e){}};
+function render(){const t=load(),tb=document.getElementById("tTabla");
+tb.innerHTML="<tr><th>No.</th><th>Tipo</th><th>Prioridad</th><th>Estado</th><th>Fecha</th><th>Acción</th></tr>"+
+t.map((x,i)=>`<tr><td>${x.id}</td><td>${x.tipo}</td><td>${x.prio}</td><td><span class="estado ${x.estado.replace(" ","")}">${x.estado}</span></td><td>${x.fecha}</td><td>${x.estado!=="Cerrado"?`<button class="btn small" onclick="avanzar(${i})">Avanzar estado</button>`:"—"}</td></tr>`).join("")}
+function avanzar(i){const t=load();const n=ESTADOS.indexOf(t[i].estado);if(n<ESTADOS.length-1)t[i].estado=ESTADOS[n+1];save(t);render()}
+document.getElementById("ticketForm").addEventListener("submit",e=>{e.preventDefault();
+const t=load(),id="T-"+String(t.length+1).padStart(3,"0");
+t.push({id,tipo:document.getElementById("tTipo").value,prio:document.getElementById("tPrioridad").value,estado:"Registrado",fecha:new Date().toLocaleDateString("es-MX")});
+save(t);const ok=document.getElementById("tOk");ok.style.display="block";ok.textContent="Ticket "+id+" registrado. Te contactaremos por correo.";e.target.reset();render()});
+render();
+</script>
+</body></html>

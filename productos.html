@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Productos de Zacahuil Huasteco | Comprar zacahuil en Huejutla</title>
+<meta name="description" content="Compra zacahuil en Huejutla. Catálogo de Zacahuil Huasteco: tradicional, familiar, para eventos y porción individual.">
+<meta name="keywords" content="comprar zacahuil,zacahuil en Huejutla,zacahuil huasteco">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="header"><div class="container nav"><a class="logo" href="index.html">ZACAHUIL <span>HUASTECO</span></a><button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+<nav id="menu"><a href="index.html">Inicio</a><a href="historia.html">Tradición</a><a class="active" href="productos.html">Productos</a><a href="promociones.html">Promociones</a><a href="galeria.html">Galería</a><a href="blog.html">Blog</a><a href="ayuda.html">Ayuda</a><a href="sdlc.html">SDLC</a><a href="contacto.html">Contacto</a><a class="cart-link" href="carrito.html"><img src="img/carro.png" alt="Carrito de compras" title="Carrito"> <span id="cartCount">0</span></a></nav></div></header>
+
+<section class="page-banner"><div class="container"><p class="eyebrow">CATÁLOGO</p><h1>Nuestros productos</h1><p>Elige, agrega al carrito y prepara tu pedido.</p></div></section>
+
+<section class="section cream"><div class="container">
+<div class="catalog-tools"><input id="productSearch" oninput="filterProducts()" placeholder="🔎 Buscar producto..." aria-label="Buscar producto"><select id="categoryFilter" onchange="filterProducts()" aria-label="Filtrar por categoría"><option value="all">Todas las categorías</option><option value="tradicional">Tradicional</option><option value="familiar">Familiar</option><option value="eventos">Eventos</option><option value="individual">Individual</option></select></div>
+
+<div id="productGrid" class="products">
+<article class="product" data-name="zacahuil tradicional" data-cat="tradicional">
+<div class="product-image"><img src="img/TRADICIONAL.jpg" alt="Zacahuil tradicional huasteco" title="Zacahuil Tradicional"></div>
+<div class="product-body"><span class="badge">TRADICIONAL</span><h2>Zacahuil Tradicional</h2><p>Preparación con masa de maíz, carne y salsa de chile.</p><strong class="price">$1800 MXN</strong><button class="btn small" onclick="addToCart('Zacahuil Tradicional')">🛒 Agregar</button></div>
+</article>
+<article class="product" data-name="zacahuil familiar" data-cat="familiar">
+<div class="product-image"><img src="img/FAMILIAR.png" alt="Zacahuil familiar para compartir" title="Zacahuil Familiar"></div>
+<div class="product-body"><span class="badge">FAMILIAR</span><h2>Zacahuil Familiar</h2><p>Una opción para compartir en reuniones familiares.</p><strong class="price">$1000 MXN</strong><button class="btn small" onclick="addToCart('Zacahuil Familiar')">🛒 Agregar</button></div>
+</article>
+<article class="product" data-name="zacahuil para eventos" data-cat="eventos">
+<div class="product-image"><img src="img/ZACAGUIL EVENTOS.png" alt="Zacahuil para eventos y fiestas" title="Zacahuil para Eventos"></div>
+<div class="product-body"><span class="badge">EVENTOS</span><h2>Zacahuil Para Eventos</h2><p>Pedidos especiales para fiestas y reuniones.</p><strong class="price">$2000 MXN</strong><button class="btn small" onclick="addToCart('Zacahuil Para Eventos')">🛒 Agregar</button></div>
+</article>
+<article class="product" data-name="porcion individual" data-cat="individual">
+<div class="product-image"><img src="img/ZACAHUIL INDIVIDUAL.jpg" alt="Porción individual de zacahuil" title="Porción Individual"></div>
+<div class="product-body"><span class="badge">INDIVIDUAL</span><h2>Porción Individual</h2><p>Porción lista para disfrutar el sabor tradicional.</p><strong class="price">$60 MXN</strong><button class="btn small" onclick="addToCart('Porción Individual')">🛒 Agregar</button></div>
+</article>
+</div>
+
+<div class="cart-mini"><span>🛒 Tu carrito tiene <b id="cartCountText">0</b> producto(s).</span><a class="btn small" href="carrito.html">Ver carrito</a></div>
+</div></section>
+
+<footer><div class="container footer-grid"><div><h3>Zacahuil Huasteco</h3><p>Tradición que se comparte.</p></div><div><h4>Enlaces</h4><a href="historia.html">Tradición</a><a href="promociones.html">Promociones</a><a href="blog.html">Blog</a><a href="ayuda.html">Ayuda</a></div><div><p>© <span id="year"></span> Zacahuil Huasteco</p></div></div></footer>
+<a class="whatsapp" href="https://wa.me/527716841329?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20zacahuil." target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+<script src="js/script.js"></script><script src="js/carrito.js"></script>
+</body>
+</html>

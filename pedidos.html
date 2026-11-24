@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Pedidos y pago | Zacahuil Huasteco</title>
+<meta name="description" content="Confirma tu pedido de zacahuil huasteco en Huejutla de Reyes: elige método de pago y fecha de entrega.">
+<link rel="stylesheet" href="css/style.css"></head>
+<body>
+<header class="header"><div class="container nav"><a class="logo" href="index.html">ZACAHUIL <span>HUASTECO</span></a><button class="menu-btn" onclick="toggleMenu()" aria-label="Abrir menú">☰</button>
+<nav id="menu"><a href="index.html">Inicio</a><a href="historia.html">Tradición</a><a href="productos.html">Productos</a><a href="promociones.html">Promociones</a><a href="galeria.html">Galería</a><a href="blog.html">Blog</a><a href="ayuda.html">Ayuda</a><a href="sdlc.html">SDLC</a><a href="contacto.html">Contacto</a><a class="cart-link" href="carrito.html"><img src="img/carro.png" alt="Carrito de compras" title="Carrito"> <span id="cartCount">0</span></a></nav></div></header>
+
+<section class="page-banner"><div class="container"><p class="eyebrow">PEDIDOS</p><h1>Confirma tu pedido</h1><p>Revisa tu carrito, elige cómo pagar y recibe tu folio.</p></div></section>
+
+<section class="section"><div class="container form-layout">
+<div class="form-box"><h2>Datos de entrega y pago</h2><p class="form-note">Demostración académica: no se cobra ni se piden datos de tarjeta.</p>
+<form id="checkoutForm">
+<label for="nombre">Nombre completo</label><input id="nombre" required autocomplete="name">
+<label for="telefono">Teléfono</label><input id="telefono" type="tel" required autocomplete="tel" placeholder="771 000 0000">
+<label for="fecha">Fecha deseada</label><input id="fecha" type="date" required>
+<label for="pago">Método de pago</label>
+<select id="pago" required><option value="Tarjeta (simulada)">Tarjeta (simulada)</option><option value="Transferencia">Transferencia bancaria</option><option value="Efectivo">Efectivo contra entrega</option></select>
+<p class="form-note" id="pagoInfo"></p>
+<label for="comentarios">Comentarios</label><textarea id="comentarios" rows="3"></textarea>
+<button class="btn full" type="submit">Pagar y confirmar pedido</button>
+</form>
+<div id="mensaje" class="success" role="status"></div></div>
+
+<aside class="order-info"><h2>Tu pedido</h2><div id="resumen"></div>
+<div class="summary-row"><span>Total</span><strong id="totalPedido">$0 MXN</strong></div>
+<p class="form-note"><a href="carrito.html">Editar carrito</a> · <a href="ayuda.html">¿Problemas con tu pedido?</a></p></aside>
+</div></section>
+
+<footer><div class="container footer-grid"><div><h3>Zacahuil Huasteco</h3><p>Tradición que se comparte.</p></div><div><h4>Enlaces</h4><a href="productos.html">Productos</a><a href="carrito.html">Carrito</a></div><div><p>© <span id="year"></span> Zacahuil Huasteco</p></div></div></footer>
+<a class="whatsapp" href="https://wa.me/527716841329?text=Hola%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+<script src="js/script.js"></script><script src="js/carrito.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const info={"Tarjeta (simulada)":"Se simula la aprobación del pago. En producción se integraría PayPal o Mercado Pago.","Transferencia":"Recibirás los datos bancarios por WhatsApp al confirmar.","Efectivo":"Pagas al recibir tu pedido."};
+function resumen(){$("resumen").innerHTML=cart.length?cart.map(x=>`<p>${x.qty} × ${x.name} — $${x.price*x.qty} MXN</p>`).join(""):"<p>Tu carrito está vacío. <a href='productos.html'>Ver productos</a></p>";$("totalPedido").textContent="$"+cart.reduce((s,x)=>s+x.price*x.qty,0)+" MXN"}
+$("pago").addEventListener("change",()=>$("pagoInfo").textContent=info[$("pago").value]);
+$("pagoInfo").textContent=info[$("pago").value];
+$("fecha").min=new Date().toISOString().slice(0,10);
+$("checkoutForm").addEventListener("submit",e=>{e.preventDefault();
+ if(!cart.length){toast("Tu carrito está vacío");return}
+ const stock=getStock(),sinStock=cart.find(x=>x.qty>stock[x.name]);
+ if(sinStock){toast("Sin existencias suficientes de "+sinStock.name);return}
+ const total=cart.reduce((s,x)=>s+x.price*x.qty,0),folio="ZH-"+Date.now().toString().slice(-6);
+ cart.forEach(x=>stock[x.name]-=x.qty);setStock(stock);
+ const orders=read("zacahuilOrders","[]");
+ orders.push({folio,nombre:$("nombre").value.trim(),pago:$("pago").value,total,items:cart,fecha:$("fecha").value,estado:"Registrado"});write("zacahuilOrders",orders);
+ if(typeof gtag==="function")gtag("event","purchase",{transaction_id:folio,value:total,currency:"MXN"});
+ const detalle=cart.map(x=>x.qty+" x "+x.name).join(", ");
+ const wa="https://wa.me/527716841329?text="+encodeURIComponent(`Hola, soy ${$("nombre").value.trim()}. Pedido ${folio}: ${detalle}. Total $${total} MXN. Pago: ${$("pago").value}. Entrega: ${$("fecha").value}.`);
+ const m=$("mensaje");m.style.display="block";
+ m.innerHTML=`<b>¡Pedido ${folio} registrado!</b><br>Total: $${total} MXN. <a href="${wa}" target="_blank" rel="noopener">Enviar mi pedido por WhatsApp</a>`;
+ cart=[];saveCart();e.target.reset();resumen();
+});
+resumen();
+</script>
+</body></html>
